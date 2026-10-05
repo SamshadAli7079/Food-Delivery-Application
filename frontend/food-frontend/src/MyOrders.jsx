@@ -22,7 +22,7 @@ function MyOrders({ onBack }) {
             }
 
             const response = await fetch(
-                "http://localhost:5000/api/orders/my-orders",
+                "https://food-delivery-application-b2pl.onrender.com/api/orders/my-orders",
                 {
                     method: "GET",
                     headers: {

@@ -323,7 +323,7 @@ const placeOrder = async (event) => {
         };
 
         const response = await fetch(
-            "http://localhost:5000/api/orders",
+            "https://food-delivery-application-b2pl.onrender.com/api/orders",
             {
                 method: "POST",
                 headers: {

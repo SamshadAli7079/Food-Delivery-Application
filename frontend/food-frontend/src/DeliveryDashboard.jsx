@@ -21,7 +21,7 @@ function DeliveryDashboard({
                 );
 
             const response = await fetch(
-                "http://localhost:5000/api/delivery/orders",
+                "https://food-delivery-application-b2pl.onrender.com/api/delivery/orders",
                 {
                     headers: {
                         Authorization:
@@ -60,7 +60,7 @@ function DeliveryDashboard({
                 );
 
             const response = await fetch(
-                `http://localhost:5000/api/delivery/orders/${orderId}/status`,
+                `https://food-delivery-application-b2pl.onrender.com/api/delivery/orders/${orderId}/status`,
                 {
                     method: "PUT",
                     headers: {

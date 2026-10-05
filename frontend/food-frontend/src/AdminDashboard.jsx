@@ -17,7 +17,7 @@ function AdminDashboard({ admin, onLogout }) {
             );
 
             const response = await fetch(
-                "http://localhost:5000/api/admin/orders",
+                "https://food-delivery-application-b2pl.onrender.com/api/admin/orders",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -57,7 +57,7 @@ function AdminDashboard({ admin, onLogout }) {
         );
 
         const response = await fetch(
-            `http://localhost:5000/api/admin/orders/${orderId}/status`,
+            `https://food-delivery-application-b2pl.onrender.com/api/admin/orders/${orderId}/status`,
             {
                 method: "PUT",
                 headers: {
@@ -112,7 +112,7 @@ const assignDeliveryAgent = async (
         );
 
         const response = await fetch(
-            `http://localhost:5000/api/admin/orders/${orderId}/assign-delivery`,
+            `https://food-delivery-application-b2pl.onrender.com/api/admin/orders/${orderId}/assign-delivery`,
             {
                 method: "PUT",
                 headers: {
@@ -169,7 +169,7 @@ const assignDeliveryAgent = async (
             );
 
             const response = await fetch(
-                "http://localhost:5000/api/admin/delivery-agents",
+                "https://food-delivery-application-b2pl.onrender.com/api/admin/delivery-agents",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`

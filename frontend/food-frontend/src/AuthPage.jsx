@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./AuthPage.css";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://food-delivery-application-b2pl.onrender.com";
 
 function AuthPage({ onLogin }) {
     const [isLogin, setIsLogin] = useState(true);
