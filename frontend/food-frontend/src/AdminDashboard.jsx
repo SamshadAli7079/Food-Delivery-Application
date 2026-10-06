@@ -612,6 +612,30 @@ const assignDeliveryAgent = async (
                                                     </strong>
 
                                                 </div>
+                                                <div className="admin-delivery-agent">
+
+    <span>
+        DELIVERY AGENT
+    </span>
+
+    {order.deliveryAgentId ? (
+        <>
+            <strong>
+                🚴 {order.deliveryAgentId.name}
+            </strong>
+
+            <p>
+                {order.deliveryAgentId.vehicleType} •{" "}
+                {order.deliveryAgentId.vehicleNumber}
+            </p>
+        </>
+    ) : (
+        <strong className="not-assigned">
+            Not Assigned
+        </strong>
+    )}
+
+</div>
 
                                             </div>
 

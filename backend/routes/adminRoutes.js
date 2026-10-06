@@ -52,14 +52,18 @@ const verifyAdmin = (req, res, next) => {
 
 router.get("/orders", verifyAdmin, async (req, res) => {
     try {
-        const orders = await Order.find()
-            .populate(
-                "userId",
-                "name email phone"
-            )
-            .sort({
-                createdAt: -1
-            });
+const orders = await Order.find()
+    .populate(
+        "userId",
+        "name email phone"
+    )
+    .populate(
+        "deliveryAgentId",
+        "name email phone vehicleType vehicleNumber"
+    )
+    .sort({
+        createdAt: -1
+    });
 
         res.json({
             message: "Orders fetched successfully",

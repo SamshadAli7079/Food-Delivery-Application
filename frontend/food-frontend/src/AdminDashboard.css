@@ -623,3 +623,36 @@
     background: #ffffff;
     color: #222222;
 }
+.admin-delivery-agent {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+}
+
+.admin-delivery-agent span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.8px;
+}
+
+.admin-delivery-agent strong {
+    display: block;
+    font-size: 15px;
+    color: #222;
+}
+
+.admin-delivery-agent p {
+    margin: 5px 0 0;
+    font-size: 13px;
+    color: #666;
+}
+
+.admin-delivery-agent .not-assigned {
+    color: #999;
+    font-weight: 600;
+}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import AuthPage from "./AuthPage";
 import MyOrders from "./MyOrders";
+import Home from "./Home";
 
 const categories = [
   { name: "Pizza", emoji: "🍕" },
@@ -24,34 +25,43 @@ const restaurants = [
     menu: [
       {
         name: "Chicken Biryani",
-        description:
-          "Aromatic basmati rice with tender chicken and authentic spices.",
+        description: "Aromatic basmati rice with tender chicken and authentic spices.",
         price: 249,
         emoji: "🍛",
       },
       {
         name: "Paneer Butter Masala",
-        description:
-          "Soft paneer cooked in a rich and creamy tomato gravy.",
+        description: "Soft paneer cooked in a rich and creamy tomato gravy.",
         price: 219,
         emoji: "🥘",
       },
       {
         name: "Butter Naan",
-        description:
-          "Soft tandoori naan finished with delicious butter.",
+        description: "Soft tandoori naan finished with delicious butter.",
         price: 49,
         emoji: "🫓",
       },
       {
         name: "Chicken Tikka",
-        description:
-          "Juicy chicken pieces marinated with aromatic Indian spices.",
+        description: "Juicy chicken pieces marinated with aromatic Indian spices.",
         price: 229,
         emoji: "🍗",
       },
+      {
+        name: "Mutton Biryani",
+        description: "Flavorful basmati rice cooked with tender mutton and spices.",
+        price: 329,
+        emoji: "🍖",
+      },
+      {
+        name: "Dal Tadka",
+        description: "Yellow lentils tempered with garlic, cumin and Indian spices.",
+        price: 149,
+        emoji: "🍲",
+      },
     ],
   },
+
   {
     name: "Urban Pizza",
     cuisine: "Pizza • Italian • Fast Food",
@@ -63,34 +73,43 @@ const restaurants = [
     menu: [
       {
         name: "Margherita Pizza",
-        description:
-          "Classic pizza with tomato sauce, mozzarella and fresh herbs.",
+        description: "Classic pizza with tomato sauce, mozzarella and fresh herbs.",
         price: 199,
         emoji: "🍕",
       },
       {
         name: "Farmhouse Pizza",
-        description:
-          "Loaded with fresh vegetables, cheese and Italian herbs.",
+        description: "Loaded with fresh vegetables, cheese and Italian herbs.",
         price: 279,
         emoji: "🍕",
       },
       {
         name: "Chicken Pepperoni Pizza",
-        description:
-          "Cheesy pizza topped with delicious chicken pepperoni.",
+        description: "Cheesy pizza topped with delicious chicken pepperoni.",
         price: 329,
         emoji: "🍕",
       },
       {
         name: "Garlic Bread",
-        description:
-          "Crispy garlic bread with a buttery cheesy topping.",
+        description: "Crispy garlic bread with a buttery cheesy topping.",
         price: 129,
         emoji: "🥖",
       },
+      {
+        name: "Cheese Burst Pizza",
+        description: "Extra cheesy pizza with a delicious cheese-filled crust.",
+        price: 349,
+        emoji: "🧀",
+      },
+      {
+        name: "Pasta Alfredo",
+        description: "Creamy Italian pasta tossed with herbs and parmesan cheese.",
+        price: 229,
+        emoji: "🍝",
+      },
     ],
   },
+
   {
     name: "Burger House",
     cuisine: "Burgers • American • Fast Food",
@@ -102,31 +121,183 @@ const restaurants = [
     menu: [
       {
         name: "Classic Chicken Burger",
-        description:
-          "Crispy chicken patty with fresh lettuce and signature sauce.",
+        description: "Crispy chicken patty with fresh lettuce and signature sauce.",
         price: 179,
         emoji: "🍔",
       },
       {
         name: "Cheese Burger",
-        description:
-          "Juicy burger loaded with melted cheese and special sauce.",
+        description: "Juicy burger loaded with melted cheese and special sauce.",
         price: 199,
         emoji: "🍔",
       },
       {
         name: "Double Chicken Burger",
-        description:
-          "Two crispy chicken patties for a seriously filling meal.",
+        description: "Two crispy chicken patties for a seriously filling meal.",
         price: 279,
         emoji: "🍔",
       },
       {
         name: "French Fries",
-        description:
-          "Golden crispy fries seasoned to perfection.",
+        description: "Golden crispy fries seasoned to perfection.",
         price: 99,
         emoji: "🍟",
+      },
+      {
+        name: "Chicken Wrap",
+        description: "Grilled chicken wrapped with fresh vegetables and creamy sauce.",
+        price: 159,
+        emoji: "🌯",
+      },
+      {
+        name: "Loaded Cheese Fries",
+        description: "Crispy fries topped with melted cheese and special sauce.",
+        price: 149,
+        emoji: "🍟",
+      },
+    ],
+  },
+
+  {
+    name: "Dragon Wok",
+    cuisine: "Chinese • Asian • Noodles",
+    rating: "4.7",
+    time: "25–35 min",
+    price: "₹₹",
+    image:
+      "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80",
+    menu: [
+      {
+        name: "Veg Hakka Noodles",
+        description: "Stir-fried noodles loaded with fresh vegetables and sauces.",
+        price: 169,
+        emoji: "🍜",
+      },
+      {
+        name: "Chicken Fried Rice",
+        description: "Flavorful fried rice with tender chicken and fresh vegetables.",
+        price: 199,
+        emoji: "🍚",
+      },
+      {
+        name: "Chicken Manchurian",
+        description: "Crispy chicken tossed in a spicy and tangy Manchurian sauce.",
+        price: 229,
+        emoji: "🍗",
+      },
+      {
+        name: "Veg Spring Rolls",
+        description: "Crispy rolls filled with seasoned vegetables.",
+        price: 139,
+        emoji: "🥢",
+      },
+      {
+        name: "Schezwan Noodles",
+        description: "Spicy noodles cooked with authentic Schezwan sauce.",
+        price: 189,
+        emoji: "🍜",
+      },
+      {
+        name: "Chilli Paneer",
+        description: "Crispy paneer tossed with peppers and spicy Chinese sauce.",
+        price: 219,
+        emoji: "🥡",
+      },
+    ],
+  },
+
+  {
+    name: "Royal Biryani",
+    cuisine: "Biryani • Mughlai • Indian",
+    rating: "4.9",
+    time: "30–35 min",
+    price: "₹₹₹",
+    image:
+      "https://images.unsplash.com/photo-1563379091339-03246963d51a?auto=format&fit=crop&w=900&q=80",
+    menu: [
+      {
+        name: "Hyderabadi Chicken Biryani",
+        description: "Traditional Hyderabadi biryani with aromatic spices and chicken.",
+        price: 279,
+        emoji: "🍛",
+      },
+      {
+        name: "Mutton Biryani",
+        description: "Tender mutton cooked with fragrant basmati rice and spices.",
+        price: 349,
+        emoji: "🍖",
+      },
+      {
+        name: "Paneer Biryani",
+        description: "Aromatic vegetarian biryani with soft paneer pieces.",
+        price: 229,
+        emoji: "🍚",
+      },
+      {
+        name: "Chicken 65",
+        description: "Crispy spicy chicken pieces with South Indian flavors.",
+        price: 219,
+        emoji: "🍗",
+      },
+      {
+        name: "Mirchi Ka Salan",
+        description: "Classic Hyderabadi curry served with spicy green chillies.",
+        price: 129,
+        emoji: "🌶️",
+      },
+      {
+        name: "Double Ka Meetha",
+        description: "Traditional Hyderabadi bread dessert with milk and nuts.",
+        price: 119,
+        emoji: "🍮",
+      },
+    ],
+  },
+
+  {
+    name: "Sweet Treats",
+    cuisine: "Desserts • Cakes • Ice Cream",
+    rating: "4.8",
+    time: "15–20 min",
+    price: "₹₹",
+    image:
+      "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80",
+    menu: [
+      {
+        name: "Chocolate Cake",
+        description: "Rich and moist chocolate cake topped with creamy frosting.",
+        price: 149,
+        emoji: "🍰",
+      },
+      {
+        name: "Chocolate Brownie",
+        description: "Warm chocolate brownie with a soft and fudgy center.",
+        price: 129,
+        emoji: "🍫",
+      },
+      {
+        name: "Vanilla Ice Cream",
+        description: "Smooth and creamy classic vanilla ice cream.",
+        price: 99,
+        emoji: "🍨",
+      },
+      {
+        name: "Gulab Jamun",
+        description: "Soft milk dumplings soaked in sweet aromatic syrup.",
+        price: 89,
+        emoji: "🍩",
+      },
+      {
+        name: "Strawberry Cake",
+        description: "Soft sponge cake layered with strawberry cream.",
+        price: 169,
+        emoji: "🍓",
+      },
+      {
+        name: "Chocolate Shake",
+        description: "Thick creamy chocolate shake served chilled.",
+        price: 139,
+        emoji: "🥤",
       },
     ],
   },
@@ -136,9 +307,21 @@ function App() {
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("foodDeliveryUser");
 
+
     return savedUser ? JSON.parse(savedUser) : null;
 });
+const [showLogin, setShowLogin] = useState(false);
 const handleLogin = (loggedInUser) => {
+    if (loggedInUser.role === "admin") {
+        window.location.href = "/admin";
+        return;
+    }
+
+    if (loggedInUser.role === "delivery") {
+        window.location.href = "/delivery";
+        return;
+    }
+
     setUser(loggedInUser);
 };
 const handleLogout = () => {
@@ -372,11 +555,31 @@ const placeOrder = async (event) => {
         ?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   };
+if (!user) {
+    if (showLogin) {
+        return (
+            <AuthPage
+                onLogin={handleLogin}
+            />
+        );
+    }
 
-  if (!user) {
-    return <AuthPage onLogin={handleLogin} />;
+    return (
+        <Home
+            onUserLogin={() => {
+                setShowLogin(true);
+            }}
+            onDeliveryLogin={() => {
+                window.location.href = "/delivery";
+            }}
+            onAdminLogin={() => {
+                window.location.href = "/admin";
+            }}
+        />
+    );
 }
-  return (
+
+return (
     <div className="app">
       
       {/* NAVBAR */}

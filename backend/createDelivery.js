@@ -4,44 +4,87 @@ require("dotenv").config();
 
 const User = require("./models/User");
 
+const deliveryAgents = [
+    {
+        name: "Rahul Kumar",
+        email: "rahul@foodly.com",
+        password: "Rahul@12345",
+        phone: "9000000001",
+        address: "Hyderabad",
+        vehicleType: "Bike",
+        vehicleNumber: "TS09AB1001"
+    },
+    {
+        name: "Aman Singh",
+        email: "aman@foodly.com",
+        password: "Aman@12345",
+        phone: "9000000002",
+        address: "Hyderabad",
+        vehicleType: "Bike",
+        vehicleNumber: "TS09AB1002"
+    },
+    {
+        name: "Arjun Yadav",
+        email: "arjun@foodly.com",
+        password: "Arjun@12345",
+        phone: "9000000003",
+        address: "Hyderabad",
+        vehicleType: "Scooter",
+        vehicleNumber: "TS09AB1003"
+    }
+];
+
 const createDelivery = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI);
 
         console.log("MongoDB Connected Successfully!");
 
-        const existingDelivery = await User.findOne({
-            email: "delivery@foodly.com"
-        });
+        for (const agent of deliveryAgents) {
 
-        if (existingDelivery) {
-            console.log("Delivery agent already exists.");
-            process.exit();
+            const existingDelivery = await User.findOne({
+                email: agent.email
+            });
+
+            if (existingDelivery) {
+                console.log(
+                    `${agent.name} already exists.`
+                );
+                continue;
+            }
+
+            const hashedPassword = await bcrypt.hash(
+                agent.password,
+                10
+            );
+
+            const delivery = await User.create({
+                name: agent.name,
+                email: agent.email,
+                password: hashedPassword,
+                phone: agent.phone,
+                address: agent.address,
+                role: "delivery",
+                deliveryStatus: "Available",
+                vehicleType: agent.vehicleType,
+                vehicleNumber: agent.vehicleNumber
+            });
+
+            console.log(
+                `Delivery agent created: ${delivery.name}`
+            );
+            console.log(
+                `Email: ${delivery.email}`
+            );
+            console.log(
+                `Vehicle: ${delivery.vehicleType} - ${delivery.vehicleNumber}`
+            );
+            console.log("-------------------------");
         }
 
-        const hashedPassword = await bcrypt.hash(
-            "Delivery@12345",
-            10
+        console.log(
+            "All delivery agents processed successfully!"
         );
-
-        const delivery = await User.create({
-            name: "Foodly Delivery",
-            email: "delivery@foodly.com",
-            password: hashedPassword,
-            phone: "8888888888",
-            address: "Hyderabad",
-            role: "delivery",
-            deliveryStatus: "Available",
-            vehicleType: "Bike",
-            vehicleNumber: "TS09AB1234"
-        });
-
-        console.log("Delivery agent created successfully!");
-        console.log("Email:", delivery.email);
-        console.log("Role:", delivery.role);
-        console.log("Status:", delivery.deliveryStatus);
-        console.log("Vehicle:", delivery.vehicleType);
-        console.log("Vehicle Number:", delivery.vehicleNumber);
 
         process.exit();
 
